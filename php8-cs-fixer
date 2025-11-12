@@ -1,0 +1,4 @@
+#!/bin/bash
+
+php8.2 /home/tb12as/.config/composer/vendor/bin/php-cs-fixer "$@"
+
