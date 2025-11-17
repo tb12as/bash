@@ -26,7 +26,12 @@ fi
 # Execute the decompression and import command with timing
 # echo "Importing '$sql_file' into '$database_name'..."
 start_time=$(date +%s)
-zcat "$sql_file" | mysql "$database_name"
+# disable foreign key checks while importing
+(
+  echo "SET FOREIGN_KEY_CHECKS=0;"
+  zcat "$sql_file"
+  echo "SET FOREIGN_KEY_CHECKS=1;"
+) | mysql "$database_name"
 end_time=$(date +%s)
 
 # Calculate the duration
