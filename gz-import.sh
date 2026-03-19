@@ -18,7 +18,7 @@ fi
 
 # Execute the decompression and import command
 echo "Decompressing and importing '$sql_file' into '$database_name'..."
-zcat "$sql_file" | mysql -u root -proot "$database_name"
+zcat "$sql_file" | mysql "$database_name"
 
 if [[ $? -eq 0 ]]; then
   echo "Import completed successfully."
